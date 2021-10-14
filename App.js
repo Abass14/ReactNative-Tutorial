@@ -47,7 +47,9 @@ const App = () => {
   return (
     <View style={styles.body}>
       <Text style={styles.text}>{number}</Text>
-      <Button title='Add' onPress={count}></Button>
+      <View style={styles.button}>
+        <Button title='Add' onPress={count}></Button>
+      </View>
       <Text style={styles.text}>You clicked {countTimes} times</Text>
     </View>
   );
@@ -55,17 +57,25 @@ const App = () => {
 
 const styles = StyleSheet.create({
   body: {
-    backgroundColor: 'red',
+    backgroundColor: 'yellow',
     alignItems: 'center',
     justifyContent: 'center',
-    flex: 1
+    flex: 1,
+    borderWidth: 20,
+    borderColor: 'red',
+    margin: 40
   },
 
   text: {
-    color: 'white',
+    color: 'black',
     fontSize: 20,
     fontStyle: 'italic',
     margin: 10
+  },
+
+  button: {
+    width: 100,
+    height: 50
   }
 });
 
