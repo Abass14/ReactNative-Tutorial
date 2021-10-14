@@ -42,13 +42,13 @@ const App = () => {
   }
   const count = ()=>{
     setNumber(addNumber);
-    setCountTimes(countTimes + 1);
+    setCountTimes(countTimez);
   }
   return (
     <View style={styles.body}>
       <Text style={styles.text}>{number}</Text>
       <Button title='Add' onPress={count}></Button>
-      <Text style={styles.text}>You clicked {count} times</Text>
+      <Text style={styles.text}>You clicked {countTimes} times</Text>
     </View>
   );
 };
