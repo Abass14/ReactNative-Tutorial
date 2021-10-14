@@ -31,22 +31,24 @@ import {
 
 
 const App = () => {
-
-  const [name, setName] = useState('Abass');
-  const [amount, setDebt] = useState({amountOne: 200, amountTwo: 500});
-  const [current, setSession] = useState(true);
-  const onClickHandler = () =>{
-    setName('Richard');
-    setDebt({amountOne: 1000, amountTwo: 550});
-    setSession(false);
+  const [number, setNumber] = useState(0);
+  const [countTimes, setCountTimes] = useState(0);
+  const addNumber = () =>{
+    return number + 5
   }
 
+  const countTimez = () =>{
+    return countTimes + 1
+  }
+  const count = ()=>{
+    setNumber(addNumber);
+    setCountTimes(countTimes + 1);
+  }
   return (
     <View style={styles.body}>
-      <Text style={styles.text}>My name is {name}</Text>
-      <Text style={styles.text}>Mr Richard owes {amount.amountOne} and Jegede owes {amount.amountTwo}</Text>
-      <Text style={styles.text}>{current ? 'current session' : 'next session'}</Text>
-      <Button title='Click Me' onPress={onClickHandler}></Button>
+      <Text style={styles.text}>{number}</Text>
+      <Button title='Add' onPress={count}></Button>
+      <Text style={styles.text}>You clicked {count} times</Text>
     </View>
   );
 };
