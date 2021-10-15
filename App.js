@@ -86,7 +86,9 @@ const App = () => {
         sections= {DATA}
         keyExtractor={(item, index)=>index.toString()}
         renderItem={({ item })=>(
-           <Text style={styles.text}>{item}</Text>
+          <View style={styles.itemChild}>
+              <Text style={styles.text}>{item}</Text>
+          </View>
         )}
         renderSectionHeader={
           ({section})=>(
@@ -97,45 +99,6 @@ const App = () => {
         }
       />
 
-      {/* FlastList
-      <FlatList
-        refreshControl={
-          <RefreshControl 
-            refreshing={ Resfreshing }
-            onRefresh= {onRefresh}
-            colors={['red']}
-          />
-        }
-        keyExtractor={(item, index)=>index.toString()}
-        data={items}
-        renderItem={theItems =>(
-          <View style={styles.item}>
-           <Text style={styles.text}>{theItems.item.name}</Text>
-          </View>
-         )
-        }
-      /> */}
-
-      {/* ScrollView List */}
-      {/* <ScrollView 
-        refreshControl={
-          <RefreshControl 
-            refreshing={ Resfreshing }
-            onRefresh= {onRefresh}
-            colors={['red']}
-          />
-        }
-      >
-        {
-          items.map((i)=>{
-              return (
-                <View style={styles.item} key={i.key}>
-                <Text style={styles.text}>{i.item}</Text>
-              </View>
-              )
-          })
-        }
-      </ScrollView> */}
     </View>
   );
 };
@@ -149,7 +112,15 @@ const styles = StyleSheet.create({
     backgroundColor: 'yellow',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: 10
+    borderWidth: 2,
+    borderColor: 'black'
+  },
+
+  itemChild: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: 'grey'
   },
 
   text: {
