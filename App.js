@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   },
 
   subBody: {
-    flex: 1,
+    flex: 2,
     flexDirection: 'column',
   },
 
