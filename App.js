@@ -22,6 +22,7 @@ import {
   StyleSheet,
   Text,
   TextInput,
+  ToastAndroid,
   TouchableHighlight,
   TouchableOpacity,
   useColorScheme,
@@ -45,10 +46,7 @@ const App = () => {
     if(name.length > 3){
       setSubmit(!isSubmitted)
     }else{
-      Alert.alert(
-        "Warning!!", "Name must be at least 4 characters", 
-        [{text: 'OK', onPress: ()=> console.warn('Ok pressed')}, {text: 'NO'}, {text: 'Do not hsow again'}],
-        {cancelable: true})
+      ToastAndroid.showWithGravity("Name", ToastAndroid.LONG, ToastAndroid.CENTER);
     }
   }
 
