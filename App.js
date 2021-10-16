@@ -9,6 +9,7 @@
 import React, { useState } from 'react';
 // import type {Node} from 'react';
 import {
+  Alert,
   Button,
   FlatList,
   Linking,
@@ -41,7 +42,11 @@ const App = () => {
   const [isSubmitted, setSubmit] = useState(false)
 
   const onPressHandler = ()=>{
-    setSubmit(!isSubmitted)
+    if(name.length > 3){
+      setSubmit(!isSubmitted)
+    }else{
+      Alert.alert("Warning!!", "Name must be at least 4 characters", [{text: 'OK', onPress: ()=> console.warn('Ok pressed')}, {text: 'NO'}, {text: 'Do not hsow again'}])
+    }
   }
 
   return (
