@@ -19,6 +19,7 @@ import {
   StatusBar,
   StyleSheet,
   Text,
+  TextInput,
   useColorScheme,
   View,
 } from 'react-native';
@@ -32,94 +33,40 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 const App = () => {
-  const [items, setItems] = useState([
-    {name: 'Item 1'},
-    {name: 'Item 2'},
-    {name: 'Item 3'},
-    {name: 'Item 4'},
-    {name: 'Item 5'},
-    {name: 'Item 6'},
-    {name: 'Item 7'},
-    {name: 'Item 8'},
-    {name: 'Item 9'},
-    {name: 'Item 10'},
-    {name: 'Item 11'},
-    {name: 'Item 12'},
-    {name: 'Item 13'},
-    {name: 'Item 14'},
-  ]);
 
-
-  const [DATA, setData] = useState([
-    {
-      title: `Title ${1}`,
-      data: [`Item 1-1`, `Item 1-2`, `Item 1-3` ]
-    }
-  ]);
-
-  const [Resfreshing, setRefresh] = useState(false)
-
-  const onRefresh =()=>{
-    setRefresh(true);
-    setData([...DATA, {title: `Title ${DATA.length + 1}`, data: [`Item ${DATA.length + 1}-1`, `Item ${DATA.length + 1}-2`]}]);
-    setRefresh(false);
-  }
+  const [name, setName] = useState('');
 
   return (
     <View style={styles.body}>
-
-      <SectionList
-        sections= {DATA}
-        refreshControl={
-          <RefreshControl
-            refreshing= {Resfreshing}
-            onRefresh= {onRefresh}
-          />
-        }
-        keyExtractor={(item, index)=>index.toString()}
-        renderItem={({ item })=>(
-          <View style={styles.itemChild}>
-              <Text style={styles.text}>{item}</Text>
-          </View>
-        )}
-        renderSectionHeader={
-          ({section})=>(
-            <View style={styles.item}>
-             <Text style={styles.text}>{section.title}</Text>
-            </View>
-          )
-        }
-      />
-
+      <Text style={styles.text}>
+        Please enter your name:
+      </Text>
+      <TextInput style={styles.input} placeholder='Enter your name' onChangeText={(value)=> setName(value)}/>
+      <Text style={styles.text}>
+        Your name is: {name}
+      </Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   body: {
+    flex: 1,
     flexDirection: 'column', 
+    alignItems: 'center'
   },
-
-  item:{
-    backgroundColor: 'yellow',
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 2,
-    borderColor: 'black'
-  },
-
-  itemChild: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: 'grey'
-  },
-
   text: {
     color: 'black',
-    fontSize: 35,
+    fontSize: 20,
     fontStyle: 'italic',
     margin: 10
+  },
+  input: {
+    borderWidth: 1,
+    borderColor: 'grey',
+    width: 200,
+    borderRadius: 5,
+    padding: 5
   }
 
 
