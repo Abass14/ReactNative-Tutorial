@@ -24,7 +24,8 @@ import {
   Text,
   TextInput,
   View,
-  Image
+  Image,
+  ImageBackground
 } from 'react-native';
 
 import {
@@ -50,7 +51,7 @@ const App = () => {
   }
 
   return (
-    <View style={styles.body}>
+    <ImageBackground style={styles.body} source={require('./assets/background.png')}>
       <Modal 
         visible={showWarning}
         transparent
@@ -99,13 +100,17 @@ const App = () => {
       {/* <Button title={isSubmitted? 'Submitted': 'Submit'} onPress={onPressHandler}/> */}
       {
         isSubmitted?
+        <View style={styles.mainItemView}>
           <Text style={styles.text}>
             Your name is: {name}
-          </Text>:
-          null
+          </Text>
+          <Image style={styles.image} source={require('./assets/sucess.png')} resizeMode='stretch'/>
+        </View>:
+          <Image style={styles.image} source={require('./assets/errors.png')} resizeMode='stretch'/>
+          //if image was a url, use source={{uri: 'image-url'}}
       }
     
-    </View>
+    </ImageBackground>
   );
 };
 
@@ -114,6 +119,15 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column', 
     alignItems: 'center'
+  },
+  mainItemView: {
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  image: {
+    width: 50,
+    height: 50,
+    margin: 5
   },
   text: {
     color: 'black',
