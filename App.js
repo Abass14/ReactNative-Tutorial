@@ -23,11 +23,8 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  ToastAndroid,
-  TouchableHighlight,
-  TouchableOpacity,
-  useColorScheme,
   View,
+  Image
 } from 'react-native';
 
 import {
