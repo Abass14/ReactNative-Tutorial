@@ -12,7 +12,7 @@ import { Headers } from './Header'
 
 export const ScreenA = ({navigation}) =>{
 
-    const handlePressable =() =>{
+    const handlePressable =() =>{ 
       navigation.navigate('Screen_B')
     }
     return (
