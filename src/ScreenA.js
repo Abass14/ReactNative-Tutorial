@@ -13,7 +13,7 @@ import { Headers } from './Header'
 export const ScreenA = ({navigation}) =>{
 
     const handlePressable =() =>{ 
-      navigation.navigate('Screen_B')
+      navigation.navigate('Screen B')
     }
     return (
       <View style={styles.body}>
