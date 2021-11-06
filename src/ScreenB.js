@@ -8,7 +8,9 @@ import {
   View,
 } from 'react-native';
 
-export const ScreenB = ({navigation}) =>{
+export const ScreenB = ({navigation, route}) =>{
+
+  const {itemName}  = route.params;
     const handlePressable =() =>{
       // navigation.navigate('Screen_A')
       //navigation.replace('Screen_A) this replaces screen B with A and clears backStack
@@ -18,7 +20,7 @@ export const ScreenB = ({navigation}) =>{
       <View style={styles.body}>
         <View style={styles.bodyTwo}>
           <Text style={styles.text}>
-            Screen B
+            {itemName} 
           </Text>
           <Pressable 
             style={({pressed}) => ({ backgroundColor: pressed ? 'blue' : 'red', padding: 10, borderRadius: 10})}

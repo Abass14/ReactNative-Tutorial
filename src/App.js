@@ -17,59 +17,63 @@ import {
 } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
+import 'react-native-gesture-handler';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import {ScreenA} from './ScreenA'
 import { ScreenB } from './ScreenB';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { color } from 'react-native-reanimated';
 
 // const Tab = createMaterialBottomTabNavigator();
-const Tab = createMaterialTopTabNavigator();
+// const Tab = createMaterialTopTabNavigator();
+const Drawer = createDrawerNavigator();
 
-
+//openDrawer() and closeDrawer() moethods can be set on views to open and close drawer nav
 const App = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({route}) =>({
-          tabBarIcon: ({focused, size, color}) => {
-            let icomName;
-            if(route.name === 'Screen A'){
-              icomName = 'autoprefixer';
-              size = focused? 25 : 20;
-              color = focused? 'black' : 'red';
-            }else if(route.name === 'Screen B'){
-              icomName = 'bootstrap';
-              size = focused? 25 : 20;
-              color = focused? 'black' : 'red';
-            }
-            return(
-              <FontAwesome5
-                name={icomName}
-                size={size}
-                color={color}
-              />
-            )
-          }
-        })}
-        tabBarOptions={{
-          activeBackgroundColor: 'grey',
-          labelStyle: { fontSize: 14},
-          // showIcon: false
+      <Drawer.Navigator
+        initialRouteName="Screen A"
+        drawerPosition='right'
+        drawerType='slide'
+        overlayColor='red'
+        drawerStyle={{
+          backgroundColor: 'blue'
         }}
-        activeColor="white"
-        inactiveColor="black"
-        barStyle={{backgroundColor: "purple"}}
+        screenOptions={{
+          headerShown: true,
+          swipeEnabled: true,
+          headerTitleAlign: 'center',
+          headerStyle: {
+            backgroundColor: 'blue',
+          },
+          headerTintColor: 'white',
+          headerTitleStyle: {
+            fontSize: 25,
+            fontWeight: 'bold'
+          }
+        }}
       >
-        <Tab.Screen 
+        <Drawer.Screen 
           name="Screen A"
           component={ScreenA}
+          options={{
+            title: 'This is Screen A'
+          }}
         />
-        <Tab.Screen 
+        <Drawer.Screen 
           name="Screen B"
           component={ScreenB}
+          options={{
+            title: 'This is Screen B',
+            drawerIcon: ({focused}) =>(
+              <FontAwesome5 name='btc' size={focused ? 25 : 20} color={focused ? 'black' : 'red'} />
+            )
+          }}
         />
-      </Tab.Navigator>
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 };
